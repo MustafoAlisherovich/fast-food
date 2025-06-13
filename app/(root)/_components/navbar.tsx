@@ -29,7 +29,7 @@ const Navbar = () => {
 			<div className='container mx-auto flex justify-between items-center'>
 				<a
 					href='#home'
-					className='text-white text-[35px] font-semibold font-nunito'
+					className='text-white text-4xl font-semibold font-nunito'
 				>
 					Kinza
 				</a>

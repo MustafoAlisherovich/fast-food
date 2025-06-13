@@ -1,5 +1,3 @@
-import { Button } from '@/components/ui/button'
-
 const Hero = () => {
 	return (
 		<section
@@ -17,12 +15,6 @@ const Hero = () => {
 					doloremque, labore sunt repellat dolore, iste magni quos nihil ducimus
 					libero ipsam.
 				</p>
-				<Button
-					size={'lg'}
-					className='font-semibold px-8 py-3 transition text-white rounded-full'
-				>
-					Order Now
-				</Button>
 			</div>
 		</section>
 	)

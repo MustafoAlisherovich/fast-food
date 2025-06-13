@@ -80,3 +80,10 @@ export const testimonials = [
 		image: '/images/img2.jpg',
 	},
 ]
+
+export const adminNavLinks = [
+	{ name: 'Dashboard', route: '/dashboard' },
+	{ name: 'Orders', route: '/orders' },
+	{ name: 'Testimonials', route: '/testimonials' },
+	{ name: 'Menu Managament', route: 'menu-managament' },
+]

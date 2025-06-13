@@ -2,6 +2,7 @@ import { ChildProps } from '@/types'
 import type { Metadata } from 'next'
 import { Nunito, Raleway } from 'next/font/google'
 import './globals.css'
+import { Toaster } from '@/components/ui/sonner'
 
 const raleway = Raleway({
 	variable: '--font-raleway',
@@ -23,6 +24,7 @@ export default function RootLayout({ children }: ChildProps) {
 		<html lang='en'>
 			<body className={`${raleway.variable} ${nunito.variable} antialiased`}>
 				{children}
+				<Toaster position='top-center' />
 			</body>
 		</html>
 	)
