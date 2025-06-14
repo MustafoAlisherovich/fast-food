@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { Nunito, Raleway } from 'next/font/google'
 import './globals.css'
 import { Toaster } from '@/components/ui/sonner'
+import CustomSessionProvider from '@/components/providers/session.provider'
 
 const raleway = Raleway({
 	variable: '--font-raleway',
@@ -21,11 +22,13 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: ChildProps) {
 	return (
-		<html lang='en'>
-			<body className={`${raleway.variable} ${nunito.variable} antialiased`}>
-				{children}
-				<Toaster position='top-center' />
-			</body>
-		</html>
+		<CustomSessionProvider>
+			<html lang='en'>
+				<body className={`${raleway.variable} ${nunito.variable} antialiased`}>
+					{children}
+					<Toaster position='top-center' />
+				</body>
+			</html>
+		</CustomSessionProvider>
 	)
 }

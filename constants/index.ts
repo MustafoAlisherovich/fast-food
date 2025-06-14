@@ -82,7 +82,7 @@ export const testimonials = [
 ]
 
 export const adminNavLinks = [
-	{ name: 'Dashboard', route: '/dashboard' },
+	{ name: 'Dashboard', route: '/' },
 	{ name: 'Orders', route: '/orders' },
 	{ name: 'Testimonials', route: '/testimonials' },
 	{ name: 'Menu Managament', route: 'menu-managament' },

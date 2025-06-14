@@ -1,6 +1,5 @@
 'use client'
 
-import { loginAdmin } from '@/actions/admin.action'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import {
@@ -17,6 +16,7 @@ import { loginSchema } from '@/lib/validation'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Loader } from 'lucide-react'
 import { signIn } from 'next-auth/react'
+import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
@@ -24,6 +24,7 @@ import { z } from 'zod'
 
 function Page() {
 	const [isLoading, setIsLoading] = useState(false)
+	const router = useRouter()
 
 	const form = useForm<z.infer<typeof loginSchema>>({
 		resolver: zodResolver(loginSchema),
@@ -35,15 +36,20 @@ function Page() {
 
 	async function onSubmit(values: z.infer<typeof loginSchema>) {
 		setIsLoading(true)
-		const res = await loginAdmin(values)
-		if (res.error) {
-			return toast.error(res.error)
+		const res = await signIn('credentials', {
+			redirect: false,
+			email: values.email,
+			password: values.password,
+			callbackUrl: '/admin',
+		})
+
+		if (res?.error) {
+			toast.error(res.error)
 			setIsLoading(false)
-		} else {
-			toast.success(res.success)
-			form.reset()
+		} else if (res?.ok) {
+			toast.success('Tizimga muvaffaqiyatli kirildi')
+			router.push('/admin')
 			setIsLoading(false)
-			signIn('credentials', { callbackUrl: '/admin' })
 		}
 	}
 
